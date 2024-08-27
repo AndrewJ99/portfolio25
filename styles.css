@@ -262,22 +262,22 @@ h1 {
 
 /* ALL THE SPECIFIC SOCIAL MEDIA ICONS  */
 .instagram-icon {
-    background-image: url('imgs/instagram.jpg');
+    background-image: url(imgs/instagram.jpg);
     background-color: transparent;
 }
 
 .linkedin-icon{
-    background-image: url('/imgs/linkedin.png');
+    background-image: url(imgs/linkedin.png);
     background-color: transparent;
 }
 
 .github-icon{
-    background-image: url('/imgs/github.jpg');
+    background-image: url(imgs/github.jpg);
     background-color: transparent;
 }
 
 .youtube-icon{
-    background-image: url('/imgs/youtube.jpg');
+    background-image: url(imgs/youtube.jpg);
     background-color: transparent;
 }
 
