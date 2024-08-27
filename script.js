@@ -22,23 +22,12 @@ async function fetchParagraphs() {
 }
 
 function loadParagraph() {
-    const now = new Date();
-    const lastChange = localStorage.getItem('lastChange');
-    const lastChangeDate = lastChange ? new Date(lastChange) : null;
-
-    // Force a new paragraph if paragraphs array is available
-    if (paragraphs.length > 0 && 
-        (!lastChangeDate || 
-        now.getDate() !== lastChangeDate.getDate() || 
-        (now.getHours() >= 8 && lastChangeDate.getHours() < 8))) {
-        
-        currentParagraph = paragraphs[Math.floor(Math.random() * paragraphs.length)];
-        localStorage.setItem('currentParagraph', currentParagraph);
-        localStorage.setItem('lastChange', now.toISOString());
-    } else {
-        currentParagraph = localStorage.getItem('currentParagraph') || 
-                           (paragraphs.length > 0 ? paragraphs[0] : "Default paragraph");
-    }
+    let newParagraph;
+    do {
+        newParagraph = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+    } while (newParagraph === currentParagraph && paragraphs.length > 1);
+    
+    currentParagraph = newParagraph;
     
     // Reset the typing animation
     currentChar = 0;
@@ -70,14 +59,35 @@ function type() {
 
     if (isDeleting && currentChar === 0) {
         isDeleting = false;
-        loadParagraph();
+        loadParagraph(); // This will now load a new paragraph every time
+        currentChar = 0; // Reset the current character
     }
 
     currentChar += isDeleting ? -1 : 1;
-    setTimeout(type, isDeleting ? 50 : 100);
+    setTimeout(type, isDeleting ? 50 : 25 );
 }
 
 fetchParagraphs();
 
 // Check for paragraph change every minute
 setInterval(loadParagraph, 60000);
+
+
+
+// CLOCK FEATURE
+// Digital Clock Function
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours().toString().padStart(2, '0');
+    let minutes = now.getMinutes().toString().padStart(2, '0');
+    let seconds = now.getSeconds().toString().padStart(2, '0');
+    let milliseconds = now.getMilliseconds().toString().padStart(3, '0').slice(0, 2);
+    
+    document.getElementById('digital-clock').textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+}
+
+// Update clock every 10 milliseconds for smoother millisecond display
+setInterval(updateClock, 10);
+
+// Initial call to display time immediately
+updateClock();
