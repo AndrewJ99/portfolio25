@@ -262,7 +262,7 @@ h1 {
 
 /* ALL THE SPECIFIC SOCIAL MEDIA ICONS  */
 .instagram-icon {
-    background-image: url('/imgs/instagram.jpg');
+    background-image: url('../imgs/instagram.jpg');
     background-color: transparent;
 }
 
