@@ -6,8 +6,43 @@
     <title>Andrew Jarmin - Snake Game</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding-top: 60px; /* Adjust based on your header height */
+        }
         #gameCanvas {
             border: 1px solid #000;
+            max-width: 100%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -23,7 +58,18 @@
     <main class="game-container">
         <h1>SNAKE GAME</h1>
         <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <p>Use arrow keys to control the snake</p>
+        <p>Use arrow keys or on-screen controls to play</p>
+        <div class="controls">
+            <div></div>
+            <button class="control-btn" id="up-btn">↑</button>
+            <div></div>
+            <button class="control-btn" id="left-btn">←</button>
+            <div></div>
+            <button class="control-btn" id="right-btn">→</button>
+            <div></div>
+            <button class="control-btn" id="down-btn">↓</button>
+            <div></div>
+        </div>
     </main>
 
     <script src="snake.js"></script>

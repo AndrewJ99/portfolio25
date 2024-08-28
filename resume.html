@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Jarmin - Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resume-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            min-height: calc(100vh - 60px); /* Adjust based on your header height */
+            margin-top: 60px; /* Adjust based on your header height */
+        }
+        .resume-viewer {
+            width: 100%;
+            max-width: 800px; /* Adjust as needed */
+            height: calc(90vh - 140px); /* Adjust based on your header height and padding */
+        }
+        .resume-fallback {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="socials.html">Socials</a>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <div class="resume-container">
+        <object class="resume-viewer" data="andrewjarmin-resume.pdf" type="application/pdf">
+            <iframe class="resume-viewer" src="andrewjarmin-resume.pdf"></iframe>
+        </object>
+        <div class="resume-fallback">
+            <p>If you can't view the resume above, you can:</p>
+            <a href="andrewjarmin-resume.pdf" class="button" target="_blank">View Resume</a>
+            <a href="andrewjarmin-resume.pdf" class="button" download>Download Resume</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -26,10 +26,35 @@ let snake;
     }, 250);
 }());
 
+// Keyboard controls
 window.addEventListener('keydown', ((evt) => {
     const direction = evt.key.replace('Arrow', '');
     snake.changeDirection(direction);
 }));
+
+// On-screen controls
+document.getElementById('up-btn').addEventListener('click', () => snake.changeDirection('Up'));
+document.getElementById('down-btn').addEventListener('click', () => snake.changeDirection('Down'));
+document.getElementById('left-btn').addEventListener('click', () => snake.changeDirection('Left'));
+document.getElementById('right-btn').addEventListener('click', () => snake.changeDirection('Right'));
+
+// Touch events for mobile devices
+document.getElementById('up-btn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    snake.changeDirection('Up');
+});
+document.getElementById('down-btn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    snake.changeDirection('Down');
+});
+document.getElementById('left-btn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    snake.changeDirection('Left');
+});
+document.getElementById('right-btn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    snake.changeDirection('Right');
+});
 
 function Snake() {
     this.x = 0;
@@ -78,20 +103,28 @@ function Snake() {
     this.changeDirection = function(direction) {
         switch(direction) {
             case 'Up':
-                this.xSpeed = 0;
-                this.ySpeed = -scale * 1;
+                if (this.ySpeed === 0) {
+                    this.xSpeed = 0;
+                    this.ySpeed = -scale * 1;
+                }
                 break;
             case 'Down':
-                this.xSpeed = 0;
-                this.ySpeed = scale * 1;
+                if (this.ySpeed === 0) {
+                    this.xSpeed = 0;
+                    this.ySpeed = scale * 1;
+                }
                 break;
             case 'Left':
-                this.xSpeed = -scale * 1;
-                this.ySpeed = 0;
+                if (this.xSpeed === 0) {
+                    this.xSpeed = -scale * 1;
+                    this.ySpeed = 0;
+                }
                 break;
             case 'Right':
-                this.xSpeed = scale * 1;
-                this.ySpeed = 0;
+                if (this.xSpeed === 0) {
+                    this.xSpeed = scale * 1;
+                    this.ySpeed = 0;
+                }
                 break;
         }
     }
